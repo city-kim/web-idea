@@ -1,5 +1,5 @@
 ﻿
-//this sidebar example html
+// 사이드바 html 예시
 //<aside>
 //    <ul>
 //        <li onclick="load(this)">menu1</li>
@@ -12,41 +12,41 @@
 
     window.onload = function () {
         sideHolder();
-        //window load call sidebar active class
+        //그냥 사용하여도 되지만, hashHandler로 내부 content를 바꾸게되면 onload로 제어
     };
 
     function load(el) {
         sessionStorage.sideIndex = '';
-        // li click event make session storage
+        // li 클릭시에 바로 sessionStorage를 생성
         var i;
         var x;
         var aside = el.parentNode.children.length;
-        // li length count
+        // li 개수 파악
         for (i = 0; i < aside; i++)
-        // all li tag has reset active class
+        // 모든 li 태그에서 active 클래스를 지움
             el.parentNode.children[i].className = '';
             el.className = 'active';
-        // click li tag give active class
+        // 클릭시 해당 li 태그만 active클래스를 줌
     
         for (x = 0; x <aside; x++)
             if(el.parentNode.children[x].className == 'active'){
                 sessionStorage.setItem('sideIndex', x);
                 break;
-        // some li give active class, this put in sessionStorage array index value
+        // sessionStorage에 li의 array index를 저장함
             }
     }
 
     function sideHolder(){
         var holderValue = sessionStorage.getItem('sideIndex');
-        // load sessionStorage value
+        // sessionStorage의 값을 불러옴
         var hoderList = document.getElementsByTagName('aside')[0].getElementsByTagName('ul')[0];
         hoderList.getElementsByTagName('li')[holderValue].className = 'active';
-        // find aside ul li and give active tag standard index value is save sessionStorage value
-        // WHY DO : browser refresh, aside list lost active
+        // aside의 ul을 불러내어 sessionStorage에 저장된 array 순서만 active 클래스를 줌
+        // WHY DO : 브라우저 새로고침시 active 클래스가 사라지는 문제를 방지
     }
 
     function goHome() {
         sessionStorage.removeItem('sideIndex');
         location.href = 'main.html';
-        // if main page didn`t have aisde list active, use this
+        // 메인페이지에 aside active 클래스가 필요없으면 sessionStorage를 지우면 해결
     }
