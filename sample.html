@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+    #tab2, #tab3, #tab4{display:none; }/* tab을 먼저 hide해줌 */
+</style>
+</head>
+<body>
+    <div class="teamAndSell">
+        <p>8.9|</p>
+        <img src="images/dealer.png" alt="dealer" />
+        <ul class="bullet">
+            <li class="active">contentsText</li> <!-- default 값 -->
+            <li>contentsText</li>
+            <li>contentsText</li>
+            <li>contentsText</li>
+        </ul>
+        <div class="tab_text">
+            <div id="tab1" class="inTabText">
+                1.It is a long established fact that a reader will be
+            </div>
+            <div id="tab2" class="inTabText">
+                2.It is a long established fact that a reader will be
+            </div>
+            <div id="tab3" class="inTabText">
+                3. It is a long established fact that a reader will be
+            </div>
+            <div id="tab4" class="inTabText">
+                4.It is a long established fact that a reader will be
+            </div>
+            <span>ANNA DOE, DEVELOPER</span>
+        </div>
+    </div>
+    <script>
+        $('.bullet > li').click(function () {//클릭시발동
+            var changeCount = $('.bullet > li').length;//li는 몇개인지
+            var changePostion = $(this).index();//클릭한곳의 index가져옴
+            for (i = 0; i < changeCount; i++) {//카운트한 토대로 for문돌림
+                $('.bullet > li').removeClass('active');//active지우고
+                $(this).addClass('active');//클릭한데만 active 달고
+                $('.inTabText').hide();//나머지 div는 숨김
+                switch (changePostion) {//index 토대로 스위치
+                    case 0:
+                        $('#tab1').show();//0번째면 1번탭 보여준다 라는식임
+                        break;
+                    case 1:
+                        $('#tab2').show();
+                        break;
+                    case 2:
+                        $('#tab3').show();
+                        break;
+                    case 3:
+                        $('#tab4').show();
+                        break;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

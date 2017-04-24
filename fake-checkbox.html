@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>fake checkbox</title>
+	<meta charset="utf-8" />
+    <style>
+        input[type="checkbox"]{display:none; }
+        input[type="checkbox"] + label:before{content:'\00a0'; display:inline-block; width:20px; height:20px; margin-right:5px; font-size:16px; background-color:#fff; border:1px solid #ccc; text-align:center; box-shadow:inset 0px 0px 10px rgba(0,0,0,0.1); }
+        input[type="checkbox"]:checked + label:before{content:'\2714'; color:rgb(0, 148, 255); box-shadow:none; }
+    </style>
+</head>
+<body>
+    <div>
+        <input id="ex-check" type="checkbox" />
+        <label for="ex-check">next box fake box</label>
+    </div>
+</body>
+</html>
