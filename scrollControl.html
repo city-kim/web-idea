@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+    #ScrollAction_1{display:none;}
+    /* 스크롤액션 1번은 그냥 안보이게만 해도됨 필요하다면 위치를 잡아줘야함 */
+    #ScrollAction_2{position:fixed; bottom:0; display:none;}
+    /* 스크록액션 2번은 bottom에 위치하도록 */
+
+</style>
+</head>
+<body>
+    <script>
+        $(window).scroll(function () {
+            //스크롤 움직임감지
+
+            scrollPercent = ($(window).scrollTop() / ($(document).height() - $(window).height())) * 100;
+            //퍼센트계산식 = window scroll top 스크롤바의 높이 / 전체 높이 - view port 높이 * 100 퍼센트로변환
+            //document height 전체 높이는 1080px보다 높을 수 있음 예) 1920 x 1080 
+            //window height 현재 보이는 화면의 높이 예)1920 x 1080 == 1080px
+            if (scrollPercent >= 9) {
+                // 9%보다 작으면
+                $('#ScrollAction_1').removeClass('hide').addClass('show');
+                $('#ScrollAction_2').removeClass('hide').addClass('show');
+                //각각 냄비뚜껑과 냄비를 보여줌
+            }
+
+            if (scrollPercent >= 33) {
+                // 33% == 내용이 끝나는위치
+                $('#ScrollAction_1').removeClass('show').addClass('hide');
+                $('#ScrollAction_2').removeClass('show').addClass('hide');
+                //숨겨줌
+            }
+            else {
+                if (scrollPercent <= 9) {
+                    //그 외의경우에 9보다 작으면 보이는 문제가 있을 수 있음 이때도 숨겨줌
+                    $('#ScrollAction_1').removeClass('show').addClass('hide');
+                    $('#ScrollAction_2').removeClass('show').addClass('hide');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
