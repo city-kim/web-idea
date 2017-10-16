@@ -1,0 +1,24 @@
+	//keyup으로하면 특수문자 입력받을때 문제가 생길 수 있으니 onblur로 받음
+  <textarea id="msg_input" onblur="stringChecker(this)" ></textarea>
+  
+  //문자입력받을때 영문, 한글, 숫자, 일부특수문자만 입력받기
+  function stringChecker(obj) {
+		var inText = obj.value;
+		var checkWord = /[^(ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z0-9\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"|\n|\s)]/;
+		if(checkWord.test(inText)){
+			if(noMoreTextAreaFocus == true){
+				noMoreTextAreaFocus = false;
+				$('.writeNotice').show();
+			}else{
+				$('.writeNotice').show();
+			}
+		}else{
+			$('.writeNotice').hide();
+		}
+	}
+  
+  //삭제했을때 스크립트가 바로 적용안되니 keyup을 한번더 받음
+	$("#msg_input").keyup(function() {
+		var obj = this;
+		stringChecker(obj);
+	});
