@@ -1,0 +1,8 @@
+	//마우스 누르면 함수호출
+   $(document).mouseup(function (e) {
+   //
+		var container = $(".contents");
+		if (!container.is(e.target) && container.has(e.target).length === 0){
+		closePopup();
+		}
+	});
