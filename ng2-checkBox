@@ -1,0 +1,36 @@
+// step.
+// 체크박스를 클릭했을때 클릭한값을 array에 쌓아준다
+
+templete
+//////////////////////////////////////////////////////
+<div>
+  <label *ngFor="let role of roles;">
+    <input type="checkbox" value="{{role.value}}" [checked]="role.value === 'some4'" (change)="roleChkChange($event)" />
+    {{role.display}}
+  </label>
+</div>
+//////////////////////////////////////////////////////
+
+TS code
+/////////////////////////////////////////////////////
+// 체크박스데이터
+roles = [
+  {value: 'some1', display: '(viewText1)'}
+  , {value: 'some2', display: '(viewText2)'}
+  , {value: 'some3', display: '(viewText3)'}
+  , {value: 'some4', display: '(viewText4)'}
+  , {value: 'some5', display: '(viewText5)'}
+];
+
+// 쌓아줄 array 위에 some4는 default로 체크되어있기 때문에 기본값으로넣어둠
+roleData = {
+  , roleList: ['some4']
+};
+
+roleChkChange(ev) {
+  const value = ev.target.value;
+  (ev.target.checked) ? this.roleData.roleList.push(value) : this.roleData.roleList.splice(this.roleData.roleList.indexOf(value), 1);
+  // 확인용 콘솔로그
+  console.log(this.roleData.roleList);
+}
+/////////////////////////////////////////////////////
