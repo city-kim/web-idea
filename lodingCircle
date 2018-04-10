@@ -1,0 +1,14 @@
+loding circle css!
+
+<div class="loading">
+  <span></span>
+</div>
+
+.loading div{position:fixed; top:55%; left:45.5%; }
+.loading div span{width:150px; height:150px; border:10xp solid #fff; border-top:10px solid #ccc; border-radius:50%; animation:spin .5s linear infinite;}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+SPIN!!!!!!!!!!
