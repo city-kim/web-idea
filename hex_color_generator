@@ -1,0 +1,11 @@
+function hexColorGenerator() {
+  let hexadecimal = 'ABCDEF0123456789' // 16진수 설정
+  let hexColor = '#' // 색상코드 담아줄 곳
+  for (let i = 0; i < 6; i++) {
+    let randomCount = Math.random() // 랜덤 숫자를 설정 이론상 0이상 1미만
+    colorMaker += hexColors[Math.floor(randomCount * 16)] // 0 이상 1 미만이기에 * 16을 해준다
+    // 최소값은 0.0...016와 같고 최대값은 15.9...984와 같다
+    // 그 값을 정수로 변환한 뒤 선언된 hexadecimal의 값의 index와 매칭해준다
+  }
+  return colorMaker // 랜덤한 hex코드 생성
+}
